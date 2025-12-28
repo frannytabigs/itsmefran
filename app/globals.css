@@ -1,0 +1,101 @@
+@import "tailwindcss";
+
+:root {
+  --background: #000000;
+  --foreground: #ffffff;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 0;
+  margin: 0;
+}
+
+.mainContent {
+  display: none;
+}
+
+.unsupported-wrapper {
+  display: none;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(5px);
+  z-index: 9999;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  top: 0;
+}
+
+.unsupported-card {
+  background: #ffffff;
+  padding: 40px 30px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  border-top: 8px solid #ff6b6b;
+  opacity: 0;
+  transform: translateY(30px) scale(0.95);
+}
+
+.icon-area {
+  font-size: 50px;
+  margin-bottom: 20px;
+  animation: subtle-bounce 2s infinite ease-in-out;
+}
+
+.unsupported-card h2 {
+  margin: 0 0 15px 0;
+  color: #2d3436;
+  font-family: sans-serif;
+  font-weight: 700;
+}
+
+.unsupported-card p {
+  color: #636e72;
+  line-height: 1.6;
+  font-family: sans-serif;
+  margin-bottom: 15px;
+}
+
+@keyframes slideUpEntrance {
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes subtle-bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@supports ((color: lch(0% 0 0)) and (gap: 1px)) {
+  .mainContent {
+    display: flex;
+  }
+  .unsupported-wrapper {
+    display: none !important;
+  }
+}
+
+@supports not ((color: lch(0% 0 0)) and (gap: 1px)) {
+  .unsupported-wrapper {
+    display: flex;
+  }
+
+  .unsupported-card {
+    animation: slideUpEntrance 5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    animation-delay: 0.3s;
+  }
+}

@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Header from "./components/header";
+import Footer from "./components/footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,9 +27,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col min-h-screen justify-between`}
       >
-        <div className="unsupported-wrapper">
+        <Header />
+
+        <div className="unsupported-wrapper grow">
           <div className="unsupported-card">
             <div className="icon-area">⚠️</div>
             <h2>Outdated Device</h2>
@@ -38,7 +42,12 @@ export default function RootLayout({
             <p>To continue the experience, please consider upgrading</p>
           </div>
         </div>
-        <main className="mainContent">{children}</main>
+
+        <main className="mainContent grow">
+          <div className="display-normal">{children}</div>
+        </main>
+
+        <Footer />
       </body>
     </html>
   );

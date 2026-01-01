@@ -29,17 +29,14 @@ export default function User() {
     setAnswer("");
 
     try {
-      const response = await fetch(
-        "https://jsonplaceholder.typicode.com/posts",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: "Bearer ${process.env.NEXT_PUBLIC_ACCESS_TOKEN}",
-          },
-          body: JSON.stringify({ prompt: input }),
-        }
-      );
+      const response = await fetch("/api/chat", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${process.env.NEXT_PUBLIC_ACCESS_TOKEN}`,
+        },
+        body: JSON.stringify({ prompt: input }),
+      });
 
       if (!response.ok) throw new Error("Network error");
 

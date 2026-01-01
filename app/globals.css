@@ -1,12 +1,14 @@
 @import "tailwindcss";
 
 :root {
-  --background: #5286ff;
-  --foreground: #b1ebdb;
+  --background: #52d4ff;
+  --foreground: #000000;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --headerBackground: #6ec3d8;
+  --hover: #d0ff50;
 }
 
 body {
@@ -22,7 +24,8 @@ body {
   display: none;
 }
 
-.unsupported-wrapper {
+.unsupported-wrapper,
+.page404 {
   display: none;
   background-color: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(5px);
@@ -33,7 +36,8 @@ body {
   top: 0;
 }
 
-.unsupported-card {
+.unsupported-card,
+.page404card {
   background: #ffffff;
   padding: 40px 30px;
   border-radius: 20px;
@@ -50,14 +54,16 @@ body {
   animation: subtle-bounce 2s infinite ease-in-out;
 }
 
-.unsupported-card h2 {
+.unsupported-card h2,
+.page404card h2 {
   margin: 0 0 15px 0;
   color: #2d3436;
   font-family: sans-serif;
   font-weight: 700;
 }
 
-.unsupported-card p {
+.unsupported-card p,
+.page404card p {
   color: #636e72;
   line-height: 1.6;
   font-family: sans-serif;
@@ -99,4 +105,13 @@ body {
     animation: slideUpEntrance 5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
     animation-delay: 0.3s;
   }
+}
+
+.page404 {
+  display: flex;
+  width: 100vw;
+}
+.page404card {
+  animation: slideUpEntrance 5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: 0.3s;
 }
